@@ -51,10 +51,11 @@ def print_menu():
     print(Fore.GREEN + "PHÂN TÍCH DỮ LIỆU GIAO DỊCH" + Style.RESET_ALL)
     print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
     print(f"{Fore.CYAN}1. Sinh dữ liệu cá nhân hóa (10 điểm){Style.RESET_ALL}")
-    print(f"{Fore.CYAN}2. Tiền xử lý dữ liệu và Phân tích dữ liệu (20điểm + 30 điểm){Style.RESET_ALL}")
-    print(f"{Fore.CYAN}3. Phát hiện giao dịch bất thường (20 điểm){Style.RESET_ALL}")
-    print(f"{Fore.CYAN}4. Tùy chọn nâng cao (20 điểm bonus){Style.RESET_ALL}")
-    print(f"{Fore.RED}5. Thoát{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}2. Tiền xử lý dữ liệu(20 điểm){Style.RESET_ALL}")
+    print(f"{Fore.CYAN}3. Phân tích dữ liệu (30 điểm){Style.RESET_ALL}")
+    print(f"{Fore.CYAN}4. Phát hiện giao dịch bất thường (20 điểm){Style.RESET_ALL}")
+    print(f"{Fore.CYAN}5. Tùy chọn nâng cao (20 điểm bonus){Style.RESET_ALL}")
+    print(f"{Fore.RED}6. Thoát{Style.RESET_ALL}")
     print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
 
 def main():
@@ -69,6 +70,7 @@ def main():
     # Import các module sau khi đã cài đặt thư viện
     from genarate_data import generate_data
     from process_data import process_data
+    from analyze_data import analyze_data
     from detect_anomalies import detect_anomalies
     from advanced_analysis import analyze_advanced
 
@@ -76,9 +78,9 @@ def main():
         clear_screen()
         print_menu()
 
-        choice = input(f"\n{Fore.YELLOW}Nhập lựa chọn của bạn (1-5): {Style.RESET_ALL}")
+        choice = input(f"\n{Fore.YELLOW}Nhập lựa chọn của bạn (1-6): {Style.RESET_ALL}")
 
-        if choice == "5":
+        if choice == "6":
             print(f"\n{Fore.GREEN}Cảm ơn bạn đã sử dụng chương trình!{Style.RESET_ALL}")
             break
 
@@ -92,17 +94,21 @@ def main():
 
             elif choice == "2":
                 clear_screen()
-                print(f"\n{Fore.GREEN}XỬ LÝ VÀ PHÂN TÍCH CƠ BẢN(mục II và III: tiền xử lý và phân tích dữ liệu){Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}Tiền xử lý dữ liệu{Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
                 process_data()
-
             elif choice == "3":
+                clear_screen()
+                print(f"\n{Fore.GREEN}PHÂN TÍCH DỮ LIỆU{Style.RESET_ALL}")
+                print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
+                analyze_data()
+            elif choice == "4":
                 clear_screen()
                 print(f"\n{Fore.GREEN}PHÁT HIỆN GIAO DỊCH BẤT THƯỜNG{Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
                 detect_anomalies()
 
-            elif choice == "4":
+            elif choice == "5":
                 clear_screen()
                 print(f"\n{Fore.GREEN}PHÂN TÍCH NÂNG CAO{Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)

@@ -1,3 +1,4 @@
+import os
 import sys
 import pandas as pd
 import numpy as np
@@ -6,11 +7,38 @@ from colorama import init, Fore, Style
 
 init()
 
+def list_available_files():
+    """Liệt kê các file dữ liệu có sẵn"""
+    files = [f for f in os.listdir('output') if f.startswith('transactions_')]
+    if not files:
+        print(f"\n{Fore.RED}Không tìm thấy file dữ liệu nào trong thư mục output!{Style.RESET_ALL}")
+        return None
+
+    print(f"\n{Fore.YELLOW}Danh sách file dữ liệu:{Style.RESET_ALL}")
+    for i, file in enumerate(files, 1):
+        file_path = os.path.join('output', file)
+        file_size = os.path.getsize(file_path) / (1024 * 1024)  # Convert to MB
+        print(f"{i}. {file} ({file_size:.1f} MB)")
+
+    while True:
+        try:
+            choice = input(f"\n{Fore.YELLOW}Chọn file để phân tích (1-{len(files)}): {Style.RESET_ALL}")
+            idx = int(choice) - 1
+            if 0 <= idx < len(files):
+                return files[idx].replace('transactions_', '').replace('.csv', '')
+        except ValueError:
+            pass
+        print(f"{Fore.RED}Lựa chọn không hợp lệ!{Style.RESET_ALL}")
+
+
 def load_data(student_id):
     """Đọc và chuẩn bị dữ liệu"""
     print(f"{Fore.BLUE}[1/4] Đọc dữ liệu{Style.RESET_ALL}")
 
-    df = pd.read_csv(f"transactions_{student_id}.csv",
+    input_file = os.path.join('output', f'transactions_{student_id}.csv')
+    print(f"File: {input_file}")
+
+    df = pd.read_csv(input_file,
                     dtype={
                         'customer_id': str,
                         'price': float,
@@ -122,9 +150,14 @@ def analyze_monthly_trends(df):
 
     return declining_customers
 
-def analyze_data(student_id):
+def analyze_data(student_id=None):
     print(f"\n{Fore.GREEN}Bắt đầu phân tích dữ liệu...{Style.RESET_ALL}")
     print("=" * 50)
+
+    if student_id is None:
+        student_id = list_available_files()
+        if student_id is None:
+            return None
 
     # 1. Đọc dữ liệu
     df = load_data(student_id)
