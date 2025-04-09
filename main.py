@@ -80,6 +80,7 @@ def main():
         choice = input(f"\n{Fore.YELLOW}Nhập lựa chọn của bạn (1-5): {Style.RESET_ALL}")
 
         if choice == "5":
+            print(f"\n{Fore.GREEN}PHÂN TÍCH NÂNG CAO{Style.RESET_ALL}")
             print(f"\n{Fore.GREEN}Cảm ơn bạn đã sử dụng chương trình!{Style.RESET_ALL}")
             break
 
@@ -93,7 +94,7 @@ def main():
 
             elif choice == "2":
                 clear_screen()
-                print(f"\n{Fore.GREEN}XỬ LÝ VÀ PHÂN TÍCH CƠ BẢN{Style.RESET_ALL}")
+                print(f"\n{Fore.GREEN}XỬ LÝ VÀ PHÂN TÍCH CƠ BẢN(mục II và III: tiền xử lý và phân tích dữ liệu){Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
                 process_data()
 
@@ -101,13 +102,13 @@ def main():
                 clear_screen()
                 print(f"\n{Fore.GREEN}PHÁT HIỆN GIAO DỊCH BẤT THƯỜNG{Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
-                detect_anomalies(student_id)
+                detect_anomalies()
 
             elif choice == "4":
                 clear_screen()
                 print(f"\n{Fore.GREEN}PHÂN TÍCH NÂNG CAO{Style.RESET_ALL}")
                 print(Fore.YELLOW + "=" * 50 + Style.RESET_ALL)
-                analyze_advanced(student_id)
+                analyze_advanced()
 
             else:
                 print(f"\n{Fore.RED}Lựa chọn không hợp lệ!{Style.RESET_ALL}")
@@ -124,4 +125,3 @@ if __name__ == "__main__":
         print("\n\nĐã dừng chương trình.")
     except Exception as e:
         print(f"\nLỗi không mong muốn: {str(e)}")
-
