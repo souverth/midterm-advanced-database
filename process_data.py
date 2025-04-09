@@ -72,20 +72,25 @@ def separate_data(df):
     print(f"\n{Fore.BLUE}[3/5] Phân tách dữ liệu tốt và xấu{Style.RESET_ALL}")
 
     # Lọc ra các dòng có lỗi (null hoặc giá trị không hợp lệ)
-    bad_rows = df[
+    error_conditions = (
+        # Kiểm tra null
         df['price'].isna() |
         df['quantity'].isna() |
         df['discount'].isna() |
-        df['total_amount'].isna()
-    ]
+        df['total_amount'].isna() |
+        # Kiểm tra giá trị âm
+        (df['price'] < 0) |
+        (df['quantity'] < 0) |
+        # Kiểm tra discount hợp lệ
+        (df['discount'] < 0) |
+        (df['discount'] > 1) |
+        # Kiểm tra total_amount
+        (abs(df['total_amount'] -
+             round(df['quantity'] * df['price'] * (1 - df['discount']), 2)) > 0.01)
+    )
 
-    # Lọc ra các dòng dữ liệu tốt
-    good_rows = df[
-        df['price'].notna() &
-        df['quantity'].notna() &
-        df['discount'].notna() &
-        df['total_amount'].notna()
-    ]
+    bad_rows = df[error_conditions]
+    good_rows = df[~error_conditions]
 
     print("Thống kê dữ liệu:")
     print(f"→ Số dòng tốt: {len(good_rows):,} ({len(good_rows)/len(df)*100:.2f}%)")

@@ -45,6 +45,7 @@ def load_data(student_id):
                         'quantity': int,
                         'discount': float
                     },
+                    usecols=['customer_id', 'order_date', 'price', 'quantity', 'discount'],
                     parse_dates=['order_date'])
 
     # Chỉ lấy dữ liệu tốt (không có NaN)

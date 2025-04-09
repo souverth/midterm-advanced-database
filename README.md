@@ -2,10 +2,6 @@
 
 Đây là bài tập lớn giữa kì môn cơ sở dữ liệu nâng cao.
 
-# Run
-
-python main.py
-
 # Hệ Thống Phân Tích Dữ Liệu
 
 Dự án này cung cấp một bộ công cụ toàn diện để xử lý và phân tích dữ liệu, với khả năng phát hiện bất thường và tạo báo cáo chi tiết.
@@ -60,3 +56,4 @@ python main.py
 ## Liên Hệ Hỗ Trợ
 
 Nếu bạn gặp vấn đề hoặc cần hỗ trợ, vui lòng tạo issue trên repository.
+*

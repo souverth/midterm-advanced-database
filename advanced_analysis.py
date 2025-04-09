@@ -184,7 +184,7 @@ def analyze_advanced(student_id=None):
     print(f"\n{Fore.GREEN}Bắt đầu phân tích nâng cao...{Style.RESET_ALL}")
     print("=" * 50)
 
-    # Nếu không có student_id, hiển thị danh sách file để chọn
+     # Nếu không có student_id, hiển thị danh sách file để chọn
     if student_id is None:
         student_id = list_available_files()
         if student_id is None:
