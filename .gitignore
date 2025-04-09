@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Môi trường ảo
+venv/
+env/
+.env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Hệ thống
+.DS_Store
+Thumbs.db
+
+# Output và data được tạo ra
+output/
+img/
+
+# Log files
+*.log
